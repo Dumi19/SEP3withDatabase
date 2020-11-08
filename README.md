@@ -1,1 +1,13 @@
 # SEP3withDatabase
+
+First thing you do is to check the branch you are working on.
+
+*If you can not find it go to terminal and write :
+git status;
+git log;
+git branch;
+
+*If you want to switch and cant find how :
+ git checkout <branch name> ;
+
+ If
