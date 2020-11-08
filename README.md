@@ -10,3 +10,5 @@ git branch;
 
 If you want to switch and cant find how :
  git checkout branch name ;
+
+For more information go to https://devconnected.com/?s=git+ .
