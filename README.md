@@ -10,4 +10,4 @@ If you can not find it go to terminal and write :
 
 *If you can not find it go to terminal and write :
  master
-
+DUPA

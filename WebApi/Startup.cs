@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Models;
 
 namespace WebApi
 {
@@ -27,7 +29,10 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IUserService, UserService>(); 
+            services.AddScoped<IUserService, UserService>();
+            services.AddMvc();
+            services.AddEntityFrameworkNpgsql().AddDbContext<MyWebApiContext>(opt =>
+                opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +42,8 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMvc();
 
             app.UseHttpsRedirection();
 
