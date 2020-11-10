@@ -58,28 +58,6 @@ namespace Server
         string s = Encoding.ASCII.GetString(dataFromClient, 0, bytesRead);
         Request req = JsonSerializer.Deserialize<Request>(s);
         return req;
-    }
-
-                NetworkStream stream = client.GetStream();
-
-                while (true)
-                {
-                    byte[] dataFromClient = new byte[1024];
-                    int bytesRead = stream.Read(dataFromClient, 0, dataFromClient.Length);
-
-                    if (bytesRead == 0)
-                    {
-                        break;
-                    }
-                    Request request = (Request)Encoding.ASCII.GetString(dataFromClient, 0, bytesRead);
-                    if("Username".Equals(request.getType())) {
-                        String result = data.getUsername();
-                        byte[] dataToClient = Encoding.ASCII.GetBytes($"Returning {new Request("Username", result)}");
-                        stream.Write(dataToClient, 0, dataToClient.Length);
-                    }
-                }
-                client.Close();
-            }
         }
 
     }
